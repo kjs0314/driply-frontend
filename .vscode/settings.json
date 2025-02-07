@@ -1,0 +1,22 @@
+{
+    "terminal.integrated.env.windows": {},
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "code-runner.runInTerminal": true,
+    "liveServer.settings.host": "localhost",
+    "liveServer.settings.CustomBrowser": "chrome",
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.printWidth": 120,
+    "prettier.useTabs": false,
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "all",
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+    "prettier.bracketSpacing": true,
+    "eslint.workingDirectories": [
+        {
+            "mode": "auto"
+        }
+    ]
+}

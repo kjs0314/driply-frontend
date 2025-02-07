@@ -1,0 +1,32 @@
+.swiper.swiper-initialized {
+    width: 100%;
+    --swiper-theme-color: #fff;
+}
+
+/* 텍스트 애니메이션 효과 적용 
+animation: kvtextLeft 1s 0.5s both; */
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* .swiper .swiper-button-prev,
+.swiper .swiper-button-next {
+  color: rgba(255, 255, 255, 0.8);
+} */
+
+/* .swiper .swiper-pagination{
+  margin-bottom: 5px;
+} */
+
+.swiper .swiper-pagination-bullet {
+    background: #000;
+    opacity: 0.2;
+}
+
+.swiper .swiper-pagination-bullet-active {
+    background: #000;
+    opacity: 1;
+}

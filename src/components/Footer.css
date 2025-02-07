@@ -1,0 +1,95 @@
+.footer {
+  background-color: #111;
+  color: #666;
+  padding: 30px 0 40px;
+}
+
+.footer-content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.footer-section h4 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #999;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.footer-section1 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section1 ul li {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+}
+
+.footer-bottom {
+  /* max-width: 1200px; */
+  margin: 40px auto 0;
+  padding: 10px;
+  border-top: 2px solid #222;
+  border-bottom: 2px solid #222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links span {
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+}
+
+.company-info {
+  font-size: 10px;
+  line-height: 1.2;
+  color: #666;
+  margin-bottom: 10px;
+  justify-self: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.copyright {
+  font-size: 12px;
+  color: #666;
+}
