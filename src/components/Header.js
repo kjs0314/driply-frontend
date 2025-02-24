@@ -6,6 +6,7 @@ const Header = () => {
     const [activeCategory, setActiveCategory] = useState(null);
     const [showSearch, setShowSearch] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+    const [showCustomerService, setShowCustomerService] = useState(false);
 
     const handleClose = () => {
         setIsClosing(true);
@@ -26,19 +27,19 @@ const Header = () => {
                 },
                 {
                     name: '홈카페 용품',
-                    items: ['에스프레소 머신', '로스팅 머신', '캡슐 머신', '오븐, 에어프라이어', '전기포트'],
+                    items: ['그릇, 커트러리', '컵, 잔, 텀블러', '커피, 티 용품', '주방잡화'],
                 },
                 {
-                    name: '원두',
-                    items: ['에스프레소 머신', '로스팅 머신', '캡슐 머신', '오븐, 에어프라이어', '전기포트'],
+                    name: '커피/차',
+                    items: ['원두, 생두', '캡슐커피', '드립백', '찻잎, 티백, 분말'],
                 },
                 {
                     name: '식품',
-                    items: ['에스프레소 머신', '로스팅 머신', '캡슐 머신', '오븐, 에어프라이어', '전기포트'],
+                    items: ['베이커리', '카페 음료', '우유, 유제품'],
                 },
                 {
                     name: '인테리어',
-                    items: ['에스프레소 머신', '로스팅 머신', '캡슐 머신', '오븐, 에어프라이어', '전기포트'],
+                    items: ['테이블', '의자', '수납장', '선반', '조명', '기타'],
                 },
             ],
         },
@@ -49,7 +50,7 @@ const Header = () => {
         },
         {
             id: 3,
-            name: '원두',
+            name: '구독',
             subcategories: [],
         },
         {
@@ -71,27 +72,61 @@ const Header = () => {
                     <li>
                         <Link to="/signup">회원가입</Link>
                     </li>
+                    |
                     <li>
                         <Link to="/login">로그인</Link>
                     </li>
-                    <li>주문조회</li>
-                    <li>최근본상품</li>
-                    <li>고객센터</li>
+                    |<li>마이페이지</li>|
+                    <li
+                        className="customer-service"
+                        onMouseEnter={() => setShowCustomerService(true)}
+                        onMouseLeave={() => setShowCustomerService(false)}
+                    >
+                        고객센터 &nbsp;
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0.827148 1.08887L5.00071 4.91122L9.17291 1.08887"
+                                stroke="#8B8F93"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                        {showCustomerService && (
+                            <div className="customer-service-container">
+                                <div className="customer-service-dropdown">
+                                    <ul>
+                                        <li>
+                                            <Link to="/faq">FAQ</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/inquiry">1:1 문의</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/product-inquiry">상품 문의</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/notice">공지사항</Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+                    </li>
                 </ul>
             </div>
 
             <div className="main-header">
                 <div className="main-header-inner">
-                    <h1 className="logo">
+                    <div className="logo">
                         <Link to="/">DRIPLY</Link>
-                    </h1>
+                    </div>
                     <nav className="main-nav">
                         <ul className="category-list">
                             {categories.map((category) => (
                                 <li
                                     key={category.id}
                                     onMouseEnter={() => setActiveCategory(category.id)}
-                                    onMouseLeave={() => setActiveCategory(null)}
+                                    // onMouseLeave={() => setActiveCategory(null)}
                                 >
                                     <Link to={`/category/${category.id}`}>{category.name}</Link>
                                     {activeCategory === category.id && category.subcategories.length > 0 && (
