@@ -11,24 +11,62 @@
 
 .top-menu {
     background: #f8f8f8;
-    padding: 8px 0; /* 14px */
+    padding: 10px 0; /* 14px */
     width: 100%;
 }
 
 .top-menu ul {
     display: flex;
     justify-content: flex-end;
-    gap: 20px;
+    gap: 8px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
     list-style: none;
-    font-size: 12px;
+    font-size: 14px;
+    color: #8b8f93;
 }
 
 .top-menu li a {
     text-decoration: none;
+    color: #8b8f93;
+}
+
+.customer-service {
+    position: relative;
+    cursor: pointer;
+}
+
+.customer-service-container {
+    position: absolute;
+    top: 100%;
+    right: -40px;
+    width: fit-content;
+    min-width: 120px;
+    /* margin-top: 10px; */
+    z-index: 1000;
+}
+
+.customer-service-dropdown {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.customer-service-dropdown ul {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 12px;
+}
+
+.customer-service-dropdown li a {
     color: #000;
+    text-align: left;
+    font-size: 14px;
+}
+
+.customer-service-dropdown a:hover {
+    font-weight: 500;
 }
 
 .main-header {
@@ -47,22 +85,26 @@
 .main-header-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 6px 20px; /* 0 20px */
+    padding: 0px 20px; /* 0 20px */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+.logo {
+    margin: 22px 0;
+}
+
 .logo a {
     text-decoration: none;
     color: #000;
-    font-size: 36px; /* 24px */
+    font-size: 28px; /* 24px */
     font-weight: bold;
 }
 
 .main-nav ul {
     display: flex;
-    gap: 96px;
+    gap: 60px;
     list-style: none;
     padding: 0;
 
@@ -110,7 +152,7 @@
     left: -30px;
     transform: translateX(0%);
     width: fit-content;
-    width: 890px;
+    width: 807px;
     padding: 10px 0 20px 0;
     margin-top: 10px;
     /* font-family: 'Pretendard', sans-serif; */
@@ -174,6 +216,8 @@
     display: flex;
     gap: 20px;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .search-btn {
@@ -181,12 +225,15 @@
     border: none;
     cursor: pointer;
     font-size: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .cart-btn {
     position: relative;
     display: flex;
     align-items: center;
+    z-index: 2;
 }
 
 .cart-count {
