@@ -48,11 +48,11 @@ const Header = () => {
             name: '브랜드',
             subcategories: [],
         },
-        {
-            id: 3,
-            name: '구독',
-            subcategories: [],
-        },
+        // {
+        //     id: 3,
+        //     name: '구독',
+        //     subcategories: [],
+        // },
         {
             id: 4,
             name: '이벤트',
@@ -126,7 +126,7 @@ const Header = () => {
                                 <li
                                     key={category.id}
                                     onMouseEnter={() => setActiveCategory(category.id)}
-                                    // onMouseLeave={() => setActiveCategory(null)}
+                                    onMouseLeave={() => setActiveCategory(null)}
                                 >
                                     <Link to={`/category/${category.id}`}>{category.name}</Link>
                                     {activeCategory === category.id && category.subcategories.length > 0 && (

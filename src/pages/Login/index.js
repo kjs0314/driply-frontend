@@ -26,8 +26,7 @@ const LoginPage = () => {
                     <input type="text" placeholder="아이디" />
                     <input type="password" placeholder="비밀번호" />
                     <div className="login-options">
-                        <Link to="/find-id">아이디 찾기</Link>
-                        <Link to="/find-password">비밀번호 찾기</Link>
+                        <Link to="/find-id">아이디 찾기</Link>|<Link to="/find-password">비밀번호 찾기</Link>
                     </div>
                     <button type="submit" className="login-btn">
                         로그인
