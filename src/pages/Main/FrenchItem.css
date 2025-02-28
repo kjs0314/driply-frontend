@@ -1,17 +1,16 @@
-.wood-item {
+.french-item {
     max-width: 1200px;
     margin: 0 auto;
-    /* padding: 0px 20px 120px 20px; */
     padding-bottom: 120px;
 }
 
-.wood-item h2 {
+.french-item h2 {
     font-size: 24px;
     margin-top: 0px;
     margin-bottom: 32px;
 }
 
-.wood-item ul {
+.french-item ul {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
@@ -20,13 +19,13 @@
     margin: 0;
 }
 
-.wood-item .product-link {
+.french-item .product-link {
     display: block;
     text-decoration: none;
     color: inherit;
 }
 
-.wood-item .placeholder-img {
+.french-item .placeholder-img {
     width: 100%;
     height: 612px;
     background-color: #e9e9e9;
@@ -37,30 +36,30 @@
     color: #666;
 }
 
-/* .wood-item .product-name {
+/* .french-item .product-name {
     font-size: 24px;
     font-weight: 500;
     text-align: center;
     margin-bottom: 15px;
   } */
 
-.wood-item .item-info {
+.french-item .item-info {
     text-align: center;
 }
 
-.wood-item .item-info h3 {
+.french-item .item-info h3 {
     font-size: 28px;
     margin-bottom: 24px;
 }
 
-.wood-item .item-info p {
+.french-item .item-info p {
     font-size: 14px;
     color: #000;
     line-height: 1.6;
     margin-bottom: 32px;
 }
 
-.wood-item .more-btn {
+.french-item .more-btn {
     background: #896848;
     color: #fff;
     border: none;
@@ -71,6 +70,6 @@
     transition: all 0.3s ease;
 }
 
-.wood-item .more-btn:hover {
+.french-item .more-btn:hover {
     background: #333;
 }

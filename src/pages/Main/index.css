@@ -3,7 +3,7 @@
 }
 
 .main {
-    padding-top: 120px; /* 헤더 전체 높이에 맞게 조정 */
+    padding-top: 165px; /* 헤더 전체 높이에 맞게 조정 */
     /* padding-bottom: 200px; */
 }
 
@@ -11,12 +11,11 @@
     position: relative;
     z-index: 1;
     background: #fff;
-    height: 750px;
 }
 
 .visual img {
     width: 100%;
-    height: 750px;
+    height: 685px; /* 750px */
     object-fit: cover;
     display: block;
 }
@@ -50,8 +49,8 @@
 
 .intro {
     text-align: center;
-    padding-top: 86px;
-    padding-bottom: 58px;
+    padding-top: 163px; /* 86px; */
+    padding-bottom: 120px;
     background: #fff;
 }
 
@@ -66,32 +65,33 @@
     font-size: 14px;
     color: #666;
     margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
 }
 
 .collection h2 {
     font-size: 30px;
     line-height: 1.4;
     margin-bottom: 20px;
-    font-family: 'Noto Sans KR', sans-serif;
+    /* font-family: 'Noto Sans KR', sans-serif; */
 }
 
 .intro p {
     font-size: 14px;
     color: #a0a0a0;
     line-height: 1.6;
-    font-family: 'Noto Sans KR', sans-serif;
+    /* font-family: 'Noto Sans KR', sans-serif; */
 }
 
 .best-item {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0px 20px 80px 20px;
+    padding-bottom: 120px;
 }
 
 .best-item h2 {
     font-size: 24px;
-    margin-bottom: 40px;
+    margin-top: 0px;
+    margin-bottom: 32px;
 }
 
 .best-item ul {
@@ -100,7 +100,8 @@
     margin: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    column-gap: 20px;
+    row-gap: 32px;
 }
 
 .best-item ul li {
@@ -116,12 +117,13 @@
 .new-item {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0px 20px 80px 20px;
+    padding-bottom: 120px;
 }
 
 .new-item h2 {
     font-size: 24px;
-    margin-bottom: 40px;
+    margin-top: 0px;
+    margin-bottom: 32px;
 }
 
 .new-item ul {
