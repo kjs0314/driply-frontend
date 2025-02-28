@@ -40,16 +40,18 @@
 .customer-service-container {
     position: absolute;
     top: 100%;
-    right: -40px;
+    right: -25px;
     width: fit-content;
     min-width: 120px;
-    /* margin-top: 10px; */
     z-index: 1000;
 }
 
 .customer-service-dropdown {
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-top: 10px;
+    z-index: 1100;
 }
 
 .customer-service-dropdown ul {
@@ -168,9 +170,10 @@
 
 .subcategory-column {
     text-align: left;
-    margin-bottom: 40px;
-    padding-right: 30px;
+    margin-bottom: 26px;
+    /* padding-right: 30px; */
     padding-left: 20px;
+    width: 162px;
 }
 
 .subcategory-column h3 {

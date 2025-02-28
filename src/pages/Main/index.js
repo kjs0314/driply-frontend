@@ -4,6 +4,7 @@ import React from 'react';
 import BestItem from './BestItem';
 import NewItem from './NewItem';
 import WoodItem from './WoodItem';
+import FrenchItem from './FrenchItem';
 import ImageSlider from './ImageSlider';
 import './index.css';
 
@@ -94,6 +95,15 @@ const MainPage = () => {
                 <ul>
                     {data.slice(0, 1).map((pro) => (
                         <WoodItem key={pro.p_id} p_id={pro.p_id} p_name={pro.p_name} p_price={pro.p_price} />
+                    ))}
+                </ul>
+            </div>
+
+            <div className="french-item">
+                <h2>프렌치 스타일</h2>
+                <ul>
+                    {data.slice(0, 1).map((pro) => (
+                        <FrenchItem key={pro.p_id} p_id={pro.p_id} p_name={pro.p_name} p_price={pro.p_price} />
                     ))}
                 </ul>
             </div>
