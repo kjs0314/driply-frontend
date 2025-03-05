@@ -187,6 +187,10 @@
     /* justify-self: center; */
 }
 
+.subcategory-column h3:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .subcategory-column ul {
     display: flex;
     flex-direction: column;

@@ -16,9 +16,13 @@ const Header = () => {
         }, 300);
     };
 
+    const getCategoryLink = (categoryId, subcategoryIndex) => {
+        return `/category/${categoryId}/${subcategoryIndex}`;
+    };
+
     const categories = [
         {
-            id: 1,
+            id: 'category',
             name: '카테고리',
             subcategories: [
                 {
@@ -44,22 +48,22 @@ const Header = () => {
             ],
         },
         {
-            id: 2,
+            id: 'brand',
             name: '브랜드',
             subcategories: [],
         },
         // {
-        //     id: 3,
-        //     name: '구독',
-        //     subcategories: [],
+        // id: 3,
+        // name: '구독',
+        // subcategories: [],
         // },
         {
-            id: 4,
+            id: 'event',
             name: '이벤트',
             subcategories: [],
         },
         {
-            id: 5,
+            id: 'community',
             name: '커뮤니티',
             subcategories: [],
         },
@@ -134,12 +138,14 @@ const Header = () => {
                                             <ul className="subcategory-list">
                                                 {category.subcategories.map((subcat, index) => (
                                                     <div key={index} className="subcategory-column">
-                                                        <h3>{subcat.name}</h3>
+                                                        <Link to={getCategoryLink(category.id, index)}>
+                                                            <h3>{subcat.name}</h3>
+                                                        </Link>
                                                         <ul>
                                                             {subcat.items.map((item, itemIndex) => (
                                                                 <li key={itemIndex}>
                                                                     <Link
-                                                                        to={`/category/${category.id}/${index}/${itemIndex}`}
+                                                                        to={`${getCategoryLink(category.id, index)}/${itemIndex}`}
                                                                     >
                                                                         {item}
                                                                     </Link>
