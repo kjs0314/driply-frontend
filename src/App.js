@@ -6,12 +6,15 @@ import Footer from './components/Footer';
 import MainPage from './pages/Main';
 import LoginPage from './pages/Login';
 import CartPage from './pages/Cart';
+import JoinCustomer from './pages/Join/JoinCustomer';
+import JoinSeller from './pages/Join/JoinSeller';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import ProductPage from "./product";
 // import UploadPage from "./upload";
 
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import CategoryPage from './pages/Category/CategoryPage';
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -32,10 +35,11 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<MainPage />} />
                     <Route path="/login" element={<LoginPage />} />
+                    <Route path="/join/customer" element={<JoinCustomer />} />
+                    <Route path="/join/seller" element={<JoinSeller />} />
                     <Route path="/cart" element={<CartPage />} />
-                    {/* <Route path="/detailView/:p_id" 
-            element={<ProductPage />} />
-            <Route path="/upload" element={<UploadPage />} /> */}
+                    {/* 카테고리 페이지 */}
+                    <Route path="/category/category/:id" element={<CategoryPage />} />
                 </Routes>
                 <Footer />
             </div>

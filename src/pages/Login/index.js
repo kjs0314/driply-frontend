@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './index.css';
 
 const LoginPage = () => {
     const [activeTab, setActiveTab] = useState('user');
+    const navigate = useNavigate();
+
+    const handleSignup = () => {
+        if (activeTab === 'user') {
+            navigate('/join/customer');
+        } else {
+            navigate('/join/seller');
+        }
+    };
+
     return (
         <div className="main">
             <div className="login-container">
@@ -31,7 +41,7 @@ const LoginPage = () => {
                     <button type="submit" className="login-btn">
                         로그인
                     </button>
-                    <button type="button" className="signup-btn">
+                    <button type="button" className="signup-btn" onClick={handleSignup}>
                         {activeTab === 'user' ? '소비자 ' : '판매자 '}
                         회원가입
                     </button>
