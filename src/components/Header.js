@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -7,6 +7,7 @@ const Header = () => {
     const [showSearch, setShowSearch] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
     const [showCustomerService, setShowCustomerService] = useState(false);
+    const navigate = useNavigate();
 
     const handleClose = () => {
         setIsClosing(true);
@@ -27,22 +28,27 @@ const Header = () => {
             subcategories: [
                 {
                     name: '홈카페 가전',
+                    id: 0,
                     items: ['에스프레소 머신', '로스팅 머신', '캡슐 머신', '오븐, 에어프라이어', '전기포트'],
                 },
                 {
                     name: '홈카페 용품',
+                    id: 1,
                     items: ['그릇, 커트러리', '컵, 잔, 텀블러', '커피, 티 용품', '주방잡화'],
                 },
                 {
                     name: '커피/차',
+                    id: 2,
                     items: ['원두, 생두', '캡슐커피', '드립백', '찻잎, 티백, 분말'],
                 },
                 {
                     name: '식품',
+                    id: 3,
                     items: ['베이커리', '카페 음료', '우유, 유제품'],
                 },
                 {
                     name: '인테리어',
+                    id: 4,
                     items: ['테이블', '의자', '수납장', '선반', '조명', '기타'],
                 },
             ],
@@ -87,7 +93,7 @@ const Header = () => {
                         onMouseLeave={() => setShowCustomerService(false)}
                     >
                         고객센터 &nbsp;
-                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="10" height="10" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M0.827148 1.08887L5.00071 4.91122L9.17291 1.08887"
                                 stroke="#8B8F93"
@@ -132,13 +138,21 @@ const Header = () => {
                                     onMouseEnter={() => setActiveCategory(category.id)}
                                     onMouseLeave={() => setActiveCategory(null)}
                                 >
-                                    <Link to={`/category/${category.id}`}>{category.name}</Link>
+                                    {/* <Link to={`/category/${category.id}`}>{category.name}</Link> */}
+                                    <span>{category.name}</span>
                                     {activeCategory === category.id && category.subcategories.length > 0 && (
                                         <div className="subcategory-container">
                                             <ul className="subcategory-list">
                                                 {category.subcategories.map((subcat, index) => (
                                                     <div key={index} className="subcategory-column">
-                                                        <Link to={getCategoryLink(category.id, index)}>
+                                                        <Link
+                                                            to={`/category/${category.id}/${subcat.id}`}
+                                                            onClick={() =>
+                                                                navigate(`/category/${category.id}/${subcat.id}`, {
+                                                                    state: { category, subcat },
+                                                                })
+                                                            }
+                                                        >
                                                             <h3>{subcat.name}</h3>
                                                         </Link>
                                                         <ul>

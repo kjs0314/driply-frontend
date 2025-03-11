@@ -39,7 +39,7 @@ export default function App() {
                     <Route path="/join/seller" element={<JoinSeller />} />
                     <Route path="/cart" element={<CartPage />} />
                     {/* 카테고리 페이지 */}
-                    <Route path="/category/category/:id" element={<CategoryPage />} />
+                    <Route path="/category/:categoryId/:subcategoryId" element={<CategoryPage />} />
                 </Routes>
                 <Footer />
             </div>
