@@ -2,15 +2,16 @@
 .category-page {
     display: flex;
     max-width: 1200px;
+    min-height: 250px;
     margin: 0 auto;
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 
 /* 사이드바 */
 .category-sidebar {
     width: 20%;
-    border-right: 1px solid #ddd;
-    padding-right: 20px;
+    /* border-right: 1px solid #ddd; */
+    padding-right: 31px;
 }
 
 .category-sidebar h3 {
@@ -36,12 +37,14 @@
 /* 메인 컨텐츠 */
 .category-main {
     width: 80%;
-    padding-left: 20px;
+    padding-left: 31px;
 }
 
 /* 배너 */
 .category-banner {
-    background-color: #f5f5f5;
+    /* width: 956px; */
+    /* height: 313px; */
+    background-color: #d9d9d9;
     border-radius: 8px;
     padding: 30px;
     margin-bottom: 30px;
@@ -58,20 +61,19 @@
 }
 
 /* 섹션 제목 */
-.section-title {
+/* .section-title {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 20px;
-}
+} */
 
 /* 상품 그리드 */
-.item-grid {
+/* .item-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
-/* 상품 카드 */
 .item-card {
     border-radius: 8px;
     border: 1px solid #ddd;
@@ -96,7 +98,7 @@
 }
 
 .item-price {
-    color: #d9534f; /* 할인 가격 색상 */
+    color: #d9534f; 
 }
 
 .item-price .discount {
@@ -105,4 +107,4 @@
 
 .original-price {
     color: gray;
-}
+} */

@@ -136,6 +136,14 @@
     padding: 20px;
 }
 
+.category-list span {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 0;
+}
+
 .category-list > li {
     position: relative;
 }
@@ -212,6 +220,12 @@
 
 .subcategory-column a:hover {
     color: rgba(255, 255, 255, 0.7);
+}
+
+/* 링크형 아닌거 */
+.category-list span:hover {
+    color: #886959;
+    font-weight: bold;
 }
 
 .category-list > li:hover > a {
