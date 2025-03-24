@@ -1,0 +1,39 @@
+.refund-section {
+    padding-top: 32px;
+}
+
+.refund-section h1 {
+    font-size: 21px;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #000;
+}
+
+/* 테이블 스타일 */
+.refund-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align-last: center;
+}
+
+.refund-table th,
+.refund-table td {
+    padding: 12px 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.refund-table th {
+    font-weight: bold;
+    border-bottom: 1px solid #000; /* 헤더 하단 경계선 */
+}
+
+.refund-table td {
+    border-bottom: 1px solid #e0e0e0; /* 행 하단 경계선 */
+}
+
+/* 마지막 행 경계선 제거 */
+.refund-table tr:last-child td {
+    border-bottom: none;
+}

@@ -1,0 +1,37 @@
+.sidebar {
+    width: 200px;
+    height: calc(100vh - 64px);
+    /* background-color: #f7f7f7; */
+    /* border-right: 1px solid #e0e0e0; */
+    padding-right: 37px;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav li {
+    margin-bottom: 1rem;
+}
+
+.sidebar nav li.font-bold {
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.sidebar nav a {
+    text-decoration: none;
+    color: #333; /* 어두운 텍스트 색상 */
+    font-size: 0.9rem;
+}
+
+.sidebar nav a:hover {
+    color: #000; /* 호버 시 검은색으로 변경 */
+}
