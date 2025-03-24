@@ -1,0 +1,114 @@
+.order-history {
+    padding-top: 32px;
+    background-color: #fff;
+}
+
+.order-history h1 {
+    font-size: 21px;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #000;
+}
+
+.add-delivery-btn {
+    float: right;
+    margin-top: -30px; /* 제목과 버튼 간격 조정 */
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.order-item {
+    margin-top: 20px; /* 주문 항목 간격 */
+    margin-bottom: 40px;
+    border-bottom: 1px solid #000;
+    background-color: #f8f8f9;
+}
+
+.order-title {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-bottom: 16px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #708098;
+}
+
+.order-date {
+    margin: 0 20px 0 32px;
+    font-size: 14px;
+    color: #666;
+}
+
+.order-detail a {
+    font-size: 14px;
+    color: #000; /* 검은색 텍스트 */
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.order-info {
+    display: flex;
+    margin: 24px 32px;
+}
+
+.product-image {
+    width: 111px;
+    height: 111px;
+    border-radius: 4px;
+    margin-right: 16px;
+    aspect-ratio: 1;
+    background-color: #e9e9e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+}
+
+.product-details {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.product-seller {
+    font-size: 14px;
+    color: #888; /* 회색 텍스트 */
+    margin: 0px;
+}
+
+.product-price {
+    font-size: 14px;
+    margin: 28px 0px 0px 0px;
+}
+
+.order-actions {
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 버튼들을 세로로 정렬 */
+    margin-left: auto; /* 오른쪽으로 밀기 */
+    gap: 8px; /* 버튼 간 간격 조정 */
+}
+
+.order-actions button {
+    padding: 6px 30px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.order-actions .review-btn {
+    background-color: #000;
+    color: #fff;
+}

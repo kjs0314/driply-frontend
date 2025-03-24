@@ -17,9 +17,9 @@ const Header = () => {
         }, 300);
     };
 
-    const getCategoryLink = (categoryId, subcategoryIndex) => {
-        return `/category/${categoryId}/${subcategoryIndex}`;
-    };
+    // const getCategoryLink = (categoryId, subcategoryIndex) => {
+    //     return `/category/${categoryId}/${subcategoryIndex}`;
+    // };
 
     const categories = [
         {
@@ -80,13 +80,17 @@ const Header = () => {
             <div className="top-menu">
                 <ul>
                     <li>
-                        <Link to="/signup">회원가입</Link>
+                        <Link to="/join/customer">회원가입</Link>
                     </li>
                     |
                     <li>
                         <Link to="/login">로그인</Link>
                     </li>
-                    |<li>마이페이지</li>|
+                    |
+                    <li>
+                        <Link to="/mypage/order-history">마이페이지</Link>
+                    </li>
+                    |
                     <li
                         className="customer-service"
                         onMouseEnter={() => setShowCustomerService(true)}
@@ -159,7 +163,19 @@ const Header = () => {
                                                             {subcat.items.map((item, itemIndex) => (
                                                                 <li key={itemIndex}>
                                                                     <Link
-                                                                        to={`${getCategoryLink(category.id, index)}/${itemIndex}`}
+                                                                        to={`/category/${category.id}/${subcat.id}/${itemIndex}`}
+                                                                        onClick={() =>
+                                                                            navigate(
+                                                                                `/category/${category.id}/${subcat.id}/${itemIndex}`,
+                                                                                {
+                                                                                    state: {
+                                                                                        categoryName: category.name,
+                                                                                        subcatName: subcat.name,
+                                                                                        itemName: item,
+                                                                                    },
+                                                                                },
+                                                                            )
+                                                                        }
                                                                     >
                                                                         {item}
                                                                     </Link>

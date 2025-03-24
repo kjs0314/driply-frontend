@@ -15,6 +15,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import CategoryPage from './pages/Category/CategoryPage';
+import SubcategoryPage from './pages/Category/SubcategoryPage';
+import MyPageLayout from './components/MyPageLayout';
+import OrderHistory from './pages/MyPage/OrderHistory';
+import OrderDetail from './pages/MyPage/OrderDetail';
+import Refund from './pages/MyPage/Refund';
+import RefundDetail from './pages/MyPage/RefundDetail';
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -40,6 +46,17 @@ export default function App() {
                     <Route path="/cart" element={<CartPage />} />
                     {/* 카테고리 페이지 */}
                     <Route path="/category/:categoryId/:subcategoryId" element={<CategoryPage />} />
+                    <Route path="/category/:categoryId/:subcatId/:itemIndex" element={<SubcategoryPage />} />
+
+                    {/* 마이페이지 */}
+                    <Route path="/mypage/*" element={<MyPageLayout />}>
+                        {/* 중첩된 라우트 */}
+                        <Route path="order-history" element={<OrderHistory />} />
+                        {/* 다른 마이페이지 컴포넌트 추가 가능 */}
+                        <Route path="order-detail" element={<OrderDetail />} />
+                        <Route path="refund" element={<Refund />} />
+                        <Route path="refund-detail" element={<RefundDetail />} />
+                    </Route>
                 </Routes>
                 <Footer />
             </div>

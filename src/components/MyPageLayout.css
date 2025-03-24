@@ -1,0 +1,16 @@
+.mypage-layout {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content {
+    flex-grow: 1; /* 오른쪽 콘텐츠 영역 확장 */
+    background-color: #fff; /* 콘텐츠 배경색 */
+    padding-bottom: 146px;
+}
+
+.top-bar {
+    height: 130px; /* 검은색 바 높이 */
+    background-color: #000; /* 검은색 배경 */
+}
