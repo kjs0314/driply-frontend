@@ -21,6 +21,9 @@ import OrderHistory from './pages/MyPage/OrderHistory';
 import OrderDetail from './pages/MyPage/OrderDetail';
 import Refund from './pages/MyPage/Refund';
 import RefundDetail from './pages/MyPage/RefundDetail';
+import Review from './pages/MyPage/Review';
+import Inquiry from './pages/MyPage/Inquiry';
+import ProductDetail from './pages/Product/ProductDetail';
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -47,6 +50,7 @@ export default function App() {
                     {/* 카테고리 페이지 */}
                     <Route path="/category/:categoryId/:subcategoryId" element={<CategoryPage />} />
                     <Route path="/category/:categoryId/:subcatId/:itemIndex" element={<SubcategoryPage />} />
+                    <Route path="/detailView/1" element={<ProductDetail />} />
 
                     {/* 마이페이지 */}
                     <Route path="/mypage/*" element={<MyPageLayout />}>
@@ -56,6 +60,8 @@ export default function App() {
                         <Route path="order-detail" element={<OrderDetail />} />
                         <Route path="refund" element={<Refund />} />
                         <Route path="refund-detail" element={<RefundDetail />} />
+                        <Route path="reviews" element={<Review />} />
+                        <Route path="inquiries" element={<Inquiry />} />
                     </Route>
                 </Routes>
                 <Footer />
