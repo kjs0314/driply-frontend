@@ -1,0 +1,83 @@
+.collection-tab {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 90px 0 60px 0;
+}
+
+.box-section {
+    margin-bottom: 185px;
+}
+
+.box-label {
+    display: inline-block;
+    background: #f3e5d6;
+    color: #8b5c2a;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 5px 16px;
+    margin-bottom: 20px;
+    margin-left: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.box-list {
+    display: flex;
+    gap: 28px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+/* .box-list--current {
+    /* 2개 한 줄 
+} */
+
+.box-list--previous {
+    flex-wrap: wrap;
+    gap: 28px;
+    /* 3개씩 2줄 */
+    max-width: 900px;
+}
+
+.box-list--previous .box-card {
+    /* 3개씩 한 줄에 나오도록 */
+    flex: 1 1 calc(33.333% - 19px);
+    max-width: calc(33.333% - 19px);
+}
+
+.box-list--current .box-card {
+    flex: 1 1 calc(50% - 14px);
+    max-width: calc(50% - 14px);
+}
+
+.box-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    min-width: 180px;
+    min-height: 200px;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.box-card-img {
+    width: 100%;
+    height: 60%;
+    background: #fff;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+
+.box-card::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 40%;
+    background: #e6e6e6;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+}

@@ -1,0 +1,283 @@
+/* 상단 배너 버튼 */
+.subscription-banner {
+    width: 100%;
+    background: #eaeaea;
+    padding: 36px 0 24px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.cta-btn {
+    background: #8b5c2a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 탭 네비게이션 */
+.subscription-tabs {
+    display: flex;
+    justify-content: start;
+    align-items: flex-end;
+    width: 100%;
+    /* max-width: 600px; */
+    padding: 0 18%;
+    background: transparent;
+    border-bottom: 1.5px solid #ececec;
+    position: relative;
+    height: 54px;
+}
+
+.subtab {
+    flex: none;
+    min-width: 134px;
+    text-align: center;
+    /* padding: 0 0 13px 0; */
+    font-size: 16px;
+    color: #a88d7f;
+    background: none;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.2s;
+    margin: 0 12px;
+}
+
+.subtab.active {
+    color: #8b5c2a;
+    font-weight: bold;
+}
+
+.subtab.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2.5px;
+    background: #8b5c2a;
+    border-radius: 2px;
+    margin: 13px auto 0 auto;
+}
+
+.subtab::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2.5px;
+    border-radius: 2px;
+    margin: 13px auto 0 auto;
+}
+
+.subscription-main-media {
+    width: 90%;
+    max-width: 1200px;
+    height: 320px;
+    margin: 40px auto 0 auto;
+    background: #ccc;
+    border-radius: 16px;
+}
+
+/* 소개 영역 */
+.subscription-info-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 48px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.subscription-info-section2 {
+    width: 90%;
+    max-width: 1400px;
+    /* margin: 160px 0 0 12.5%; */
+    margin: 160px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.subscription-badge {
+    display: inline-block;
+    background: #f3e5d6;
+    color: #8b5c2a;
+    font-size: 22px; /*22px*/
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 4px 12px;
+    margin-bottom: 16px;
+}
+
+.subscription-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #212122;
+    margin: 0 0 18px 0;
+    line-height: 1.3;
+}
+
+.subscription-desc {
+    font-size: 20px;
+    color: #222;
+    margin: 0;
+    line-height: 1.7;
+}
+.subscription-item {
+    max-width: 1400px;
+    /* margin: 35px 12.5%; */
+    margin: 35px auto;
+}
+
+.subscription-item2 {
+    max-width: 1200px;
+    /* margin: 35px 12.5%; */
+    margin: 35px auto;
+}
+
+.subscription-item ul,
+.subscription-item2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 32px;
+}
+
+.subscription-item ul li,
+.subscription-item2 ul li {
+    position: relative;
+}
+
+.subsplaceholder-img {
+    /* width: 381px;
+    height: 229px; */
+    width: 441px;
+    height: 289px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background-color: #e9e9e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+}
+
+.SubsImageSlider {
+    margin: 60px 0px;
+}
+
+.subsplaceholder {
+    width: 586px;
+    height: 194px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background-color: #e9e9e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    gap: 194px;
+}
+
+.subs-icon {
+    flex-shrink: 0;
+}
+
+.subs-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.subs-title {
+    font-weight: bold;
+    font-size: 23px;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.subs-desc {
+    font-size: 21px;
+    color: #000;
+    line-height: 1.6;
+}
+
+.faq-section {
+    max-width: 600px;
+    margin: 162px auto 191px auto;
+    background: #fff;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 43px;
+    font-weight: bold;
+    margin-bottom: 60px;
+    margin-top: 0;
+}
+
+.faq-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ececec;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+}
+
+.faq-arrow {
+    font-size: 1.2rem;
+    color: #bbb;
+    transition: transform 0.2s;
+}
+
+.faq-arrow.open {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 0 24px 0;
+    color: #666;
+    font-size: 1rem;
+    background: #fafafa;
+}
+
+.subs-bottom-banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.subs-bottom-banner-btn {
+    background: #8b5c2a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 26px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}

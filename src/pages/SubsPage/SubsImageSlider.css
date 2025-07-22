@@ -1,0 +1,36 @@
+.subs-slide-container {
+    width: 100%;
+    /* max-width: 1100px;
+    margin: 0 auto; */
+    overflow: hidden;
+    background: none;
+    margin: 12px 0;
+}
+
+.swiper-wrapper {
+    min-width: 0;
+}
+
+.swiper-slide {
+    height: auto !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subs-slide-img {
+    width: 95%;
+    aspect-ratio: 4/3;
+    background-color: #e0e0e0;
+    background-size: cover;
+    background-position: center;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Swiper Grid 버그 대응 */
+.swiper-grid-column > .swiper-wrapper {
+    display: grid !important;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: column;
+}
