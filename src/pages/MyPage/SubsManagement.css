@@ -1,0 +1,136 @@
+.subs-management {
+    padding-top: 32px;
+    background-color: #fff;
+}
+
+.subs-management h1 {
+    font-size: 21px;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #000;
+}
+
+/* 카드 정보 영역 */
+.subs-card-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1.5px solid #ccced1;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 28px 0 18px 0;
+}
+
+.subs-card-label {
+    font-size: 15px;
+    color: #222;
+    margin-right: 8px;
+    font-weight: 300;
+}
+
+.subs-card-info {
+    font-size: 15px;
+    color: #555;
+    margin-right: 12px;
+    font-weight: 500;
+}
+
+.subs-card-btn {
+    font-size: 14px;
+
+    border: 1.5px solid #ccced1;
+    color: #888;
+    border-radius: 6px;
+    padding: 6px 14px;
+    cursor: not-allowed;
+}
+
+.subs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+.subs-table thead {
+    height: 40px;
+}
+.subs-table tbody tr {
+    height: 145px;
+}
+
+.subs-table th,
+.subs-table td {
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.subs-table th {
+    font-weight: 300;
+    background-color: #f9f9f9;
+}
+
+.subs-table td {
+    color: #555;
+    vertical-align: middle;
+}
+
+.subs-table td:first-child {
+    text-align: center;
+}
+
+.subs-thumb {
+    width: 76px;
+    height: 76px;
+    background: #e0e0e0;
+    /* border-radius: 8px; */
+    margin: 10px auto;
+}
+
+.subs-name {
+    text-align: left;
+    font-weight: 500;
+    color: #222;
+}
+
+.subs-action-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    height: 145px;
+}
+
+.subs-action-btn {
+    padding: 7px 14px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 112px;
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+.subs-action-btn--black {
+    background: #222;
+    color: #fff;
+    border: none;
+}
+
+.subs-action-btn:hover:not(:disabled):not(.subs-action-btn--black) {
+    background-color: #000;
+    color: #fff;
+}
+
+.subs-action-btn:disabled {
+    background: #f5f5f5;
+    color: #bbb;
+    cursor: not-allowed;
+}

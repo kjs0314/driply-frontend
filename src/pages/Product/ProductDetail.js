@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
     const [activeTab, setActiveTab] = useState('상품 상세');
+
+    const navigate = useNavigate();
+    // const { id } = useParams(); // /product/:id 경로에서 id 추출
+
+    const handleBuy = () => {
+        navigate(`/product/1/order`);
+    };
 
     return (
         <div className="main">
@@ -137,7 +145,9 @@ const ProductDetail = () => {
                     </div>
                     <div className="buttton-section">
                         <button className="cart-button">장바구니</button>
-                        <button className="buy-button">구매</button>
+                        <button className="buy-button" onClick={handleBuy}>
+                            구매
+                        </button>
                     </div>
                 </div>
             </div>

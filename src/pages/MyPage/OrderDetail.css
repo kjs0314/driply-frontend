@@ -65,7 +65,8 @@
 }
 
 .order-actions button:hover {
-    background-color: #f7f7f7; /* 호버 시 배경색 변경 */
+    background-color: #000;
+    color: #fff;
 }
 
 .order-actions .review-btn {

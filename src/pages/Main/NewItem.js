@@ -5,7 +5,7 @@ import './NewItem.css';
 const NewItem = ({ p_id, p_price, p_name }) => {
     return (
         <li>
-            <Link to={`/detailView/${p_id}`} className="product-link">
+            <Link to={`/product/${p_id}`} className="product-link">
                 {/* <img src={`../images/cosmetic${p_id}.JPG`} alt="" /> */}
                 <div className="placeholder-img">이미지</div>
                 <div className="product-info">

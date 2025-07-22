@@ -53,11 +53,7 @@ const Header = () => {
                 },
             ],
         },
-        {
-            id: 'brand',
-            name: '브랜드',
-            subcategories: [],
-        },
+
         // {
         // id: 3,
         // name: '구독',
@@ -71,6 +67,11 @@ const Header = () => {
         {
             id: 'community',
             name: '커뮤니티',
+            subcategories: [],
+        },
+        {
+            id: 'subscription',
+            name: '구독',
             subcategories: [],
         },
     ];
@@ -143,7 +144,18 @@ const Header = () => {
                                     onMouseLeave={() => setActiveCategory(null)}
                                 >
                                     {/* <Link to={`/category/${category.id}`}>{category.name}</Link> */}
-                                    <span>{category.name}</span>
+                                    {(() => {
+                                        switch (category.id) {
+                                            case 'subscription':
+                                                return <Link to="/subspage">{category.name}</Link>;
+                                            case 'event':
+                                                return <Link to="/event">{category.name}</Link>;
+                                            case 'community':
+                                                return <Link to="/community">{category.name}</Link>;
+                                            default:
+                                                return <span>{category.name}</span>;
+                                        }
+                                    })()}
                                     {activeCategory === category.id && category.subcategories.length > 0 && (
                                         <div className="subcategory-container">
                                             <ul className="subcategory-list">

@@ -1,0 +1,116 @@
+.community-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 16px 60px 16px;
+    background: #fff;
+}
+
+.community-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.community-header h1 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.community-post-btn {
+    background: #8b5c2a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    place-items: center;
+    gap: 8px;
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 34px 22px;
+}
+
+/* .community-card-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+
+.community-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #888;
+    margin: 12px 16px 0 16px;
+}
+
+.community-card-user {
+    font-weight: 500;
+    color: #222;
+}
+
+.community-card-date {
+    font-size: 13px;
+    color: #bbb;
+}
+
+.community-card-content {
+    font-size: 15px;
+    color: #222;
+    margin: 12px 16px 0 16px;
+    flex: 1;
+}
+
+.community-card-actions {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    color: #888;
+    margin: 14px 16px 16px 16px;
+} */
+
+.community-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.community-pagination button {
+    background: none;
+    border: 0px solid #ddd;
+    color: #555;
+    border-radius: 4px;
+    /* padding: 6px 14px; */
+    font-size: 15px;
+    cursor: pointer;
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+
+.community-pagination button.active,
+.community-pagination button:hover:not(:disabled) {
+    /* background: #8b5c2a; */
+    color: #000;
+    font-weight: bold;
+    /* border-color: #8b5c2a; */
+}
+
+.community-pagination button:disabled {
+    color: #bbb;
+    border-color: #eee;
+    cursor: not-allowed;
+}
