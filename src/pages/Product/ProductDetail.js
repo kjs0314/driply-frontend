@@ -1,15 +1,98 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './ProductDetail.css';
+import { setActiveTab, setSelectedOption, setAdditionalConfig, setQuantity } from './productDetailSlice';
 
 const ProductDetail = () => {
-    const [activeTab, setActiveTab] = useState('상품 상세');
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const { id } = useParams(); // /product/:id 경로에서 id 추출
+    const [openQnaId, setOpenQnaId] = useState(null);
+
+    const infoSectionRef = useRef(null);
+    const purchaseSectionRef = useRef(null);
+    const reviewSectionRef = useRef(null);
+    const qnaSectionRef = useRef(null);
+
+    // Redux 상태값 가져오기
+    const activeTab = useSelector((state) => state.productDetail.activeTab);
+    const selectedOption = useSelector((state) => state.productDetail.selectedOption);
+    const additionalConfig = useSelector((state) => state.productDetail.additionalConfig);
+    const quantity = useSelector((state) => state.productDetail.quantity);
+
+    // 탭 핸들러
+    // const onTabClick = (tab) => dispatch(setActiveTab(tab));
+    const handleTabClick = (tab) => {
+        dispatch(setActiveTab(tab));
+        if (tab === '상품 상세' && infoSectionRef.current) {
+            infoSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        } else if (tab === '구매 정보' && purchaseSectionRef.current) {
+            purchaseSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        } else if (tab === '리뷰' && reviewSectionRef.current) {
+            reviewSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        } else if (tab === '상품 Q&A' && qnaSectionRef.current) {
+            qnaSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    };
+    // 옵션/구성 핸들러
+    const handleOptionChange = (e) => dispatch(setSelectedOption(e.target.value));
+    const handleConfigChange = (e) => dispatch(setAdditionalConfig(e.target.value));
+
+    // 수량 증감 (수정 필요)
+    const handleQuantityChange = (e) => dispatch(setQuantity(e.target.value));
 
     const handleBuy = () => {
         navigate(`/product/1/order`);
+        // 만약 동적 productId라면 useParams()로 가져오세요
+    };
+
+    // 총 상품 금액 계산
+    // 실제 상품 데이터/옵션별 금액 반영 필요
+    const basePrice = 29500;
+    const totalPrice = basePrice * quantity;
+
+    const qnaList = [
+        {
+            id: 1,
+            status: '답변완료',
+            title: '주문하면 언제 받을 수 있나요?',
+            content: '언제 가능한가요?',
+            isSecret: false,
+            author: 'abc****',
+            date: '2025.02.01',
+        },
+        {
+            id: 2,
+            status: '답변완료',
+            title: '비밀글 입니다.',
+            content: '',
+            isSecret: true,
+            author: 'abc****',
+            date: '2025.02.01',
+        },
+        {
+            id: 3,
+            status: '답변완료',
+            title: '블랙 컬러 재입고 언제 되나요?',
+            content: '언제 가능한가요?',
+            isSecret: false,
+            author: 'mell****',
+            date: '2025.01.14',
+        },
+        {
+            id: 4,
+            status: '답변완료',
+            title: '오늘 선물용으로 주문했어요. 수요일전에 배송 받을 수 있는지 확인 부탁드립니다.',
+            content: '친구 생일선물로 주문했습니다.\n수요일까지 배송 가능할까요?',
+            isSecret: false,
+            author: 'qwer**',
+            date: '2025.01.07',
+            answer: '안녕하세요. 오늘 당일출고 예정입니다. 감사합니다.',
+            answerDate: '2025.01.07',
+        },
+    ];
+    const handleRowClick = (id) => {
+        setOpenQnaId(openQnaId === id ? null : id);
     };
 
     return (
@@ -120,7 +203,7 @@ const ProductDetail = () => {
                     {/* 옵션 선택 */}
                     <div className="options">
                         <label htmlFor="option-select">옵션 선택:</label>
-                        <select id="option-select">
+                        <select id="option-select" value={selectedOption} onChange={handleOptionChange}>
                             <option value="">선택해주세요</option>
                             {/* 옵션 추가 */}
                             <option value="option1">옵션 1</option>
@@ -131,7 +214,7 @@ const ProductDetail = () => {
                     {/* 추가 구성 선택 */}
                     <div className="additional-config">
                         <label htmlFor="additional-select">추가 구성:</label>
-                        <select id="additional-select">
+                        <select id="additional-select" value={additionalConfig} onChange={handleConfigChange}>
                             <option value="">선택해주세요</option>
                             {/* 추가 구성 옵션 */}
                             <option value="config1">구성 1</option>
@@ -139,10 +222,18 @@ const ProductDetail = () => {
                         </select>
                     </div>
 
+                    {/* 수량 선택 */}
+                    <div className="quantity-section">
+                        <button onClick={() => dispatch(setQuantity(Math.max(1, quantity - 1)))}>-</button>
+                        <input type="number" min="1" value={quantity} onChange={handleQuantityChange} />
+                        <button onClick={() => dispatch(setQuantity(quantity + 1))}>+</button>
+                    </div>
+
                     {/* 총 상품 금액 및 장바구니 버튼 */}
                     <div className="total-price">
-                        총 상품 금액: <strong>0원</strong>
+                        총 상품 금액: <strong>{totalPrice.toLocaleString()}원</strong>
                     </div>
+
                     <div className="buttton-section">
                         <button className="cart-button">장바구니</button>
                         <button className="buy-button" onClick={handleBuy}>
@@ -155,35 +246,35 @@ const ProductDetail = () => {
             <div className="tab-container">
                 <div
                     className={`tab-item ${activeTab === '상품 상세' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('상품 상세')}
+                    onClick={() => handleTabClick('상품 상세')}
                 >
                     상품 상세
                 </div>
                 <div
                     className={`tab-item ${activeTab === '구매 정보' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('구매 정보')}
+                    onClick={() => handleTabClick('구매 정보')}
                 >
                     구매 정보
                 </div>
                 <div
                     className={`tab-item ${activeTab === '리뷰' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('리뷰')}
+                    onClick={() => handleTabClick('리뷰')}
                 >
                     리뷰
                 </div>
                 <div
                     className={`tab-item ${activeTab === '상품 Q&A' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('상품 Q&A')}
+                    onClick={() => handleTabClick('상품 Q&A')}
                 >
                     상품 Q&A
                 </div>
             </div>
 
-            {/* 탭 내용 */}
-            <div className="tab-content"></div>
+            {/* 상품 상세_이미지 예정 */}
+            <div ref={infoSectionRef} className="tab-content"></div>
 
             {/* 상품정보 보기 섹션 */}
-            <div className="info-section-container">
+            <div ref={purchaseSectionRef} className="info-section-container">
                 <div className="info-section">
                     <h3 className="section-title">상품정보 보기</h3>
                     <div className="info-item-section">
@@ -298,7 +389,7 @@ const ProductDetail = () => {
             </div>
 
             {/* 리뷰 섹션 */}
-            <div className="review-section">
+            <div ref={reviewSectionRef} className="review-section">
                 <h3 className="review-title">
                     전체 리뷰수 <span className="review-count">27</span>
                 </h3>
@@ -442,6 +533,110 @@ const ProductDetail = () => {
                         </div>
                         <span className="review-date">2025.02.05</span>
                     </div>
+                </div>
+
+                <div ref={qnaSectionRef} className="qna-section">
+                    <div className="qna-title-row">
+                        <div className="qna-title">상품 Q&A</div>
+                        <div className="qna-desc">구매하신 상품에 대해 궁금한 점이 있으신 경우 문의해주세요.</div>
+                        <div className="qna-btn-row">
+                            <button className="qna-btn">상품 Q&amp;A 작성하기</button>
+                            <button className="qna-btn qna-my-btn">나의 Q&amp;A 조회</button>
+                        </div>
+                    </div>
+                    <table className="qna-table">
+                        <thead>
+                            <tr>
+                                <th className="qna-th-status">답변상태</th>
+                                <th className="qna-th-title">제목</th>
+                                <th className="qna-th-author">작성자</th>
+                                <th className="qna-th-date">작성일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {qnaList.map((item) => (
+                                <React.Fragment key={item.id}>
+                                    <tr
+                                        className="qna-row"
+                                        onClick={() => handleRowClick(item.id)}
+                                        style={{
+                                            cursor: 'pointer',
+                                            background: openQnaId === item.id ? '#f6f6f6' : '#fff',
+                                        }}
+                                    >
+                                        <td className="qna-td-status">{item.status}</td>
+                                        <td className="qna-td-title">
+                                            {item.isSecret && (
+                                                <svg
+                                                    width="14"
+                                                    height="17"
+                                                    viewBox="0 0 14 17"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M2.94961 6.0998V5.41409C2.94961 3.13491 4.75604 1.2998 6.99961 1.2998C9.24318 1.2998 11.0496 3.13491 11.0496 5.41409V6.0998M2.94961 6.0998C2.20711 6.0998 1.59961 6.71695 1.59961 7.47123V14.3284C1.59961 15.0827 2.20711 15.6998 2.94961 15.6998H11.0496C11.7921 15.6998 12.3996 15.0827 12.3996 14.3284V7.47123C12.3996 6.71695 11.7921 6.0998 11.0496 6.0998M2.94961 6.0998H11.0496M6.99961 11.6498V9.8498"
+                                                        stroke="#6F7174"
+                                                        stroke-width="1.5"
+                                                        stroke-linecap="round"
+                                                    />
+                                                </svg>
+                                            )}
+                                            <span style={{ whiteSpace: 'pre-line' }}>{item.title}</span>
+                                        </td>
+                                        <td className="qna-td-author">{item.author}</td>
+                                        <td className="qna-td-date">{item.date}</td>
+                                    </tr>
+                                    {openQnaId === item.id && (
+                                        <>
+                                            {/* 질문 내용: 제목 칸에만 노출 */}
+                                            <tr className="qna-content-row">
+                                                <td></td>
+                                                <td className="qna-td-question">
+                                                    {item.content.split('\n').map((line, idx) => (
+                                                        <div key={idx}>{line}</div>
+                                                    ))}
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            {/* 답변도 동일하게 제목 칸에만 노출 */}
+                                            {item.answer && (
+                                                <tr className="qna-answer-row">
+                                                    <td></td>
+                                                    <td className="qna-td-answer">
+                                                        <svg
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                        >
+                                                            <path
+                                                                d="M15.0864 19.8002L20.4004 14.4862M20.4004 14.4862L15.0864 9.17217M20.4004 14.4862H7.60039C5.39126 14.4862 3.60039 12.6953 3.60039 10.4862V4.2002"
+                                                                stroke="#8B8F93"
+                                                                stroke-width="2"
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                            />
+                                                        </svg>
+                                                        <span className="qna-answer-label">답변</span>
+                                                        <span className="qna-answer-content">{item.answer}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span className="qna-answer-author">판매자</span>
+                                                    </td>
+                                                    <td>
+                                                        <span className="qna-answer-date">{item.answerDate}</span>
+                                                    </td>
+                                                </tr>
+                                            )}
+                                        </>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

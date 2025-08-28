@@ -1,0 +1,125 @@
+.addr-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(40, 40, 40, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+}
+
+.addr-modal-container {
+    background: #fff;
+    border-radius: 16px;
+    width: 400px;
+    max-width: 95vw;
+    padding: 0 0 20px 0;
+    box-shadow: 0 6px 32px rgba(30, 30, 30, 0.14);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.addr-modal-header {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px 24px 12px 24px;
+    border-bottom: 1px solid #f1f1f2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addr-modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.addr-modal-list {
+    padding: 20px 20px 0 20px;
+}
+
+.addr-card {
+    background: #f8f8fa;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    padding: 14px 16px;
+}
+
+.addr-card-main {
+    margin-bottom: 8px;
+}
+
+.addr-card-title {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.addr-card-default {
+    background: #222;
+    color: #fff;
+    border-radius: 7px;
+    font-size: 12px;
+    padding: 2px 8px;
+    margin-left: 7px;
+    vertical-align: middle;
+}
+
+.addr-card-address {
+    color: #333;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.addr-card-phone {
+    color: #949494;
+    font-size: 13px;
+}
+
+.addr-card-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.addr-card-btn {
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #414141;
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 6px 13px;
+    cursor: pointer;
+}
+
+.addr-card-btn:hover {
+    border-color: #aaa;
+}
+
+.addr-card-select-btn {
+    background: #222;
+    color: #fff;
+    border-color: #222;
+}
+
+.addr-modal-add-btn {
+    display: block;
+    width: calc(100% - 36px);
+    margin: 22px auto 0 auto;
+    background: #232324;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    padding: 13px 0;
+    cursor: pointer;
+    text-align: center;
+}

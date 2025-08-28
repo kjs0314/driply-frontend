@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveTab, setOpenIndex } from './subsSlice';
 import SubsBanner from './SubsBanner';
-import './index.css';
 import SubsImageSlider from './SubsImageSlider';
 import CollectionTab from './CollectionTab';
+import './index.css';
 
 const faqList = [
     { question: '구독을 신청했는데 드리플리박스가 안와요!' },
@@ -12,23 +14,25 @@ const faqList = [
 ];
 
 const SubsPage = () => {
-    const [activeTab, setActiveTab] = useState('guide'); // 'guide' or 'collection'
-    const [openIndex, setOpenIndex] = useState(null);
+    const dispatch = useDispatch();
 
-    const toggle = (idx) => setOpenIndex(openIndex === idx ? null : idx);
+    const activeTab = useSelector((state) => state.subs.activeTab);
+    const openIndex = useSelector((state) => state.subs.openIndex);
+
+    const toggle = (idx) => dispatch(setOpenIndex(openIndex === idx ? null : idx));
     return (
         <div className="main">
             <SubsBanner /> {/* 상단 배너 */}
             <div className="subscription-tabs">
                 <div
                     className={`subtab${activeTab === 'guide' ? ' active' : ''}`}
-                    onClick={() => setActiveTab('guide')}
+                    onClick={() => dispatch(setActiveTab('guide'))}
                 >
                     드리플리박스 안내
                 </div>
                 <div
                     className={`subtab${activeTab === 'collection' ? ' active' : ''}`}
-                    onClick={() => setActiveTab('collection')}
+                    onClick={() => dispatch(setActiveTab('collection'))}
                 >
                     모아보기
                 </div>

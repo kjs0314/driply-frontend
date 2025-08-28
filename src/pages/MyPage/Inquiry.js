@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveTab, setExpandedRow, setModalOpen } from './inquirySlice';
 import './Inquiry.css';
 
 const Inquiry = () => {
-    const [activeTab, setActiveTab] = useState('상품 Q&A내역'); // 기본 활성화 탭 설정
-    const [expandedRow, setExpandedRow] = useState(null); // 클릭된 행 상태 관리
+    const dispatch = useDispatch();
 
-    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
+    // Redux로 상태 관리
+    const activeTab = useSelector((state) => state.inquiry.activeTab);
+    const expandedRow = useSelector((state) => state.inquiry.expandedRow);
+    const isModalOpen = useSelector((state) => state.inquiry.isModalOpen);
 
-    const handleModalOpen = () => setIsModalOpen(true); // 모달 열기
-    const handleModalClose = () => setIsModalOpen(false); // 모달 닫기
+    const handleModalOpen = () => dispatch(setModalOpen(true));
+    const handleModalClose = () => dispatch(setModalOpen(false));
 
     const inquiries = [
         {
@@ -39,7 +43,7 @@ const Inquiry = () => {
     ];
 
     const handleRowClick = (id) => {
-        setExpandedRow(expandedRow === id ? null : id); // 클릭된 행을 토글
+        dispatch(setExpandedRow(expandedRow === id ? null : id)); // 클릭된 행을 토글
     };
 
     return (
@@ -50,13 +54,13 @@ const Inquiry = () => {
             <div className="inquiry-tabs">
                 <button
                     className={`inquiry-tab ${activeTab === '1:1 문의내역' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('1:1 문의내역')}
+                    onClick={() => dispatch(setActiveTab('1:1 문의내역'))}
                 >
                     1:1 문의내역
                 </button>
                 <button
                     className={`inquiry-tab ${activeTab === '상품 Q&A내역' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('상품 Q&A내역')}
+                    onClick={() => dispatch(setActiveTab('상품 Q&A내역'))}
                 >
                     상품 Q&A내역
                 </button>

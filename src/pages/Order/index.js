@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBuyer, setSelectedCoupon, setPaymentMethod } from './orderSlice';
 import './index.css';
+import AddressModal from './AddressModal';
 
 const orderProducts = [
     {
@@ -58,7 +59,16 @@ const coupons = [
     { id: 'coupon3', name: '신규 회원 10% 할인 쿠폰', discount: 1500 },
 ];
 
+// const userInfo = {
+//     name: '홍길동',
+//     address: '서울 강남구 역삼동 111-2 가나다라 아파트, 107동 2304호',
+//     phone: '010-1234-5678',
+//     isDefault: true,
+// };
+
 const OrderPage = () => {
+    const [addressModalOpen, setAddressModalOpen] = useState(false);
+
     // Redux 상태 연결
     const dispatch = useDispatch();
     const buyer = useSelector((state) => state.order.buyer);
@@ -98,6 +108,9 @@ const OrderPage = () => {
     // 브랜드별로 상품 묶기
     const groupedProducts = groupByBrand(orderProducts);
 
+    // Redux에서 선택된 배송지
+    const selectedAddress = useSelector((state) => state.order.selectedAddress);
+
     return (
         <div className="main">
             <div className="order-page">
@@ -105,6 +118,36 @@ const OrderPage = () => {
                 <div className="order-content">
                     {/* 좌측: 주문 폼 */}
                     <div className="order-left">
+                        {/* 배송지 섹션 */}
+                        <section className="order-section order-shipping-section">
+                            <div className="order-section-header order-shipping-header">
+                                배송지
+                                <button className="order-shipping-edit-btn" onClick={() => setAddressModalOpen(true)}>
+                                    배송지 변경
+                                </button>
+                            </div>
+                            <div className="order-shipping-info">
+                                <div className="order-shipping-row">
+                                    <span className="order-shipping-name">
+                                        {selectedAddress.name}
+                                        {selectedAddress.isDefault && (
+                                            <span className="order-shipping-default">기본배송지</span>
+                                        )}
+                                    </span>
+                                </div>
+                                <div className="order-shipping-address">{selectedAddress.address}</div>
+                                <span className="order-shipping-phone">{selectedAddress.phone}</span>
+                            </div>
+                            <div className="order-shipping-request">
+                                <select>
+                                    <option>배송시 요청사항을 선택해주세요.</option>
+                                    <option>문 앞에 놓아주세요.</option>
+                                    <option>배송 전 연락주세요.</option>
+                                    {/* 기타 옵션 */}
+                                </select>
+                            </div>
+                            {addressModalOpen && <AddressModal onClose={() => setAddressModalOpen(false)} />}
+                        </section>
                         {/* 주문자 */}
                         <section className="order-section">
                             <div className="order-section-header">주문자</div>
