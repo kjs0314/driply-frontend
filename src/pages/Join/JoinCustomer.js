@@ -1,75 +1,62 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { setActiveTab, setCustomerForm, setCustomerFormTerm, resetJoinForm } from './joinSlice';
 import './SignUp.css';
 
 const JoinCustomer = () => {
-    const [activeTab, setActiveTab] = useState('user');
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
+
+    const activeTab = useSelector((state) => state.join.activeTab);
+    const formData = useSelector((state) => state.join.customerForm);
 
     // 현재 경로에 따라 탭 상태를 설정
     useEffect(() => {
         if (location.pathname === '/join/seller') {
-            setActiveTab('seller');
+            dispatch(setActiveTab('seller'));
         } else {
-            setActiveTab('user'); // 기본값은 소비자
+            dispatch(setActiveTab('user'));
         }
-    }, [location.pathname]);
+    }, [location.pathname, dispatch]);
 
     const handleTabChange = (tab) => {
-        if (tab === 'seller') {
-            navigate('/join/seller'); // 판매자 페이지로 이동
-        } else {
-            navigate('/join/customer'); // 소비자 페이지로 이동
-        }
+        dispatch(setActiveTab(tab));
+        navigate(tab === 'seller' ? '/join/seller' : '/join/customer');
     };
 
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        confirmPassword: '',
-        name: '',
-        birthdate: '',
-        phone: '',
-        terms: {
-            all: false,
-            personal: false,
-            privacy: false,
-            sms: false,
-            marketing: false,
-        },
-    });
-
+    // input 변경 (username, password 등)
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        dispatch(setCustomerForm({ [name]: value }));
     };
 
+    // 약관 체크박스
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
         if (name === 'all') {
-            setFormData({
-                ...formData,
-                terms: {
+            dispatch(
+                setCustomerFormTerm({
                     all: checked,
                     personal: checked,
                     privacy: checked,
                     sms: checked,
                     marketing: checked,
-                },
-            });
+                }),
+            );
         } else {
-            setFormData({
-                ...formData,
-                terms: { ...formData.terms, [name]: checked },
-            });
+            dispatch(setCustomerFormTerm({ [name]: checked }));
+            // 전체동의 자동 체크/해제 로직은 필요 시 추가 구현
         }
     };
 
+    // 제출
     const handleSubmit = (e) => {
         e.preventDefault();
         // 여기서 formData를 백엔드로 전송하는 로직 추가
         console.log('회원가입 데이터:', formData);
+        dispatch(resetJoinForm()); // 폼·탭 모두 초기화!
     };
 
     return (

@@ -5,7 +5,7 @@
 .main {
     padding-top: 165px; /* 헤더 전체 높이에 맞게 조정 */
     padding-bottom: 70px;
-    overflow-x: hidden;
+    /* overflow-x: hidden; /*스크롤 시 탭이 붙는것 때문에 비활성화*/
 }
 
 .visual {

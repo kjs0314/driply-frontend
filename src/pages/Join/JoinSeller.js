@@ -1,77 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { setActiveTab, setSellerForm, setSellerFormTerm, resetJoinForm } from './joinSlice'; // joinSlice 경로 수정 주의
 import './SignUp.css';
 
 const JoinSeller = () => {
-    const [activeTab, setActiveTab] = useState('seller');
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
 
+    const activeTab = useSelector((state) => state.join.activeTab);
+    const sellerForm = useSelector((state) => state.join.sellerForm);
+
+    // 현재 경로에 따라 탭 상태를 설정
     // 현재 경로에 따라 탭 상태를 설정
     useEffect(() => {
         if (location.pathname === '/join/seller') {
-            setActiveTab('seller');
+            dispatch(setActiveTab('seller'));
         } else {
-            setActiveTab('user'); // 기본값은 소비자
+            dispatch(setActiveTab('user'));
         }
-    }, [location.pathname]);
+    }, [location.pathname, dispatch]);
 
+    // 탭 변경
     const handleTabChange = (tab) => {
-        if (tab === 'seller') {
-            navigate('/join/seller'); // 판매자 페이지로 이동
-        } else {
-            navigate('/join/customer'); // 소비자 페이지로 이동
-        }
+        dispatch(setActiveTab(tab));
+        navigate(tab === 'seller' ? '/join/seller' : '/join/customer');
     };
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        confirmPassword: '',
-        storeName: '',
-        phone: '',
-        representativeName: '',
-        businessNumber: '',
-        registrationNumber: '',
-        communicationSalesNumber: '',
-        terms: {
-            all: false,
-            businessTerms: false,
-            privacy: false,
-            sms: false,
-            marketing: false,
-        },
-    });
 
+    // 입력값 변경
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        dispatch(setSellerForm({ [name]: value }));
     };
 
+    // 약관 체크박스
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
         if (name === 'all') {
-            setFormData({
-                ...formData,
-                terms: {
+            dispatch(
+                setSellerFormTerm({
                     all: checked,
                     businessTerms: checked,
                     privacy: checked,
                     sms: checked,
                     marketing: checked,
-                },
-            });
+                    // 필요하다면 personal: checked
+                }),
+            );
         } else {
-            setFormData({
-                ...formData,
-                terms: { ...formData.terms, [name]: checked },
-            });
+            dispatch(setSellerFormTerm({ [name]: checked }));
         }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // 여기서 formData를 백엔드로 전송하는 로직 추가
-        console.log('판매자 회원가입 데이터:', formData);
+        // sellerForm을 백엔드로 전송하는 로직 추가
+        console.log('판매자 회원가입 데이터:', sellerForm);
+        dispatch(resetJoinForm()); // 필요하다면 폼 초기화
     };
 
     return (
@@ -100,7 +86,7 @@ const JoinSeller = () => {
                             type="text"
                             name="username"
                             placeholder="4-20자리 / 영문, 숫자 사용 가능"
-                            value={formData.username}
+                            value={sellerForm.username}
                             onChange={handleInputChange}
                             required
                         />
@@ -113,7 +99,7 @@ const JoinSeller = () => {
                             type="password"
                             name="password"
                             placeholder="8-16자리 / 영문 대소문자, 숫자 조합"
-                            value={formData.password}
+                            value={sellerForm.password}
                             onChange={handleInputChange}
                             required
                         />
@@ -126,7 +112,7 @@ const JoinSeller = () => {
                             type="password"
                             name="confirmPassword"
                             placeholder="비밀번호를 다시 입력해주세요"
-                            value={formData.confirmPassword}
+                            value={sellerForm.confirmPassword}
                             onChange={handleInputChange}
                             required
                         />
@@ -139,7 +125,7 @@ const JoinSeller = () => {
                             type="text"
                             name="storeName"
                             placeholder="상호명 입력"
-                            value={formData.storeName}
+                            value={sellerForm.storeName}
                             onChange={handleInputChange}
                             required
                         />
@@ -152,7 +138,7 @@ const JoinSeller = () => {
                             type="tel"
                             name="phone"
                             placeholder="전화번호 입력"
-                            value={formData.phone}
+                            value={sellerForm.phone}
                             onChange={handleInputChange}
                             required
                         />
@@ -165,7 +151,7 @@ const JoinSeller = () => {
                             type="text"
                             name="representativeName"
                             placeholder="대표자명 입력"
-                            value={formData.representativeName}
+                            value={sellerForm.representativeName}
                             onChange={handleInputChange}
                             required
                         />
@@ -178,7 +164,7 @@ const JoinSeller = () => {
                             type="text"
                             name="businessNumber"
                             placeholder="사업장명 입력"
-                            value={formData.businessNumber}
+                            value={sellerForm.businessNumber}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -190,7 +176,7 @@ const JoinSeller = () => {
                             type="text"
                             name="registrationNumber"
                             placeholder="사업자 등록번호 입력"
-                            value={formData.registrationNumber}
+                            value={sellerForm.registrationNumber}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -202,7 +188,7 @@ const JoinSeller = () => {
                             type="text"
                             name="communicationSalesNumber"
                             placeholder="통신판매업 신고번호 입력"
-                            value={formData.communicationSalesNumber}
+                            value={sellerForm.communicationSalesNumber}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -223,7 +209,7 @@ const JoinSeller = () => {
                                 <input
                                     type="checkbox"
                                     name="all"
-                                    checked={formData.terms.all}
+                                    checked={sellerForm.terms.all}
                                     onChange={handleCheckboxChange}
                                 />
                                 전체 동의
@@ -233,7 +219,7 @@ const JoinSeller = () => {
                                 <input
                                     type="checkbox"
                                     name="personal"
-                                    checked={formData.terms.personal}
+                                    checked={sellerForm.terms.personal}
                                     onChange={handleCheckboxChange}
                                     required
                                 />
@@ -243,7 +229,7 @@ const JoinSeller = () => {
                                 <input
                                     type="checkbox"
                                     name="privacy"
-                                    checked={formData.terms.privacy}
+                                    checked={sellerForm.terms.privacy}
                                     onChange={handleCheckboxChange}
                                     required
                                 />
@@ -253,7 +239,7 @@ const JoinSeller = () => {
                                 <input
                                     type="checkbox"
                                     name="sms"
-                                    checked={formData.terms.sms}
+                                    checked={sellerForm.terms.sms}
                                     onChange={handleCheckboxChange}
                                     required
                                 />
@@ -263,7 +249,7 @@ const JoinSeller = () => {
                                 <input
                                     type="checkbox"
                                     name="marketing"
-                                    checked={formData.terms.marketing}
+                                    checked={sellerForm.terms.marketing}
                                     onChange={handleCheckboxChange}
                                 />
                                 (선택) 마케팅 정보 수신 동의 - 이메일, SMS/MMS

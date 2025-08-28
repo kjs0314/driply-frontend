@@ -266,6 +266,7 @@
 /* 파일 업로드 라벨 */
 .inquiry-file-upload-label {
     display: flex;
+    width: calc(100% - 20px);
     padding: 10px;
     place-items: center;
     font-size: 16px;
@@ -293,10 +294,11 @@
 }
 
 .inquiry-delete-preview-btn {
-    margin-left: 10px;
+    margin-left: -20px;
     font-size: 18px;
     background-color: transparent;
     border: none;
+    align-self: flex-start;
 }
 
 /* 모달 버튼 스타일 */

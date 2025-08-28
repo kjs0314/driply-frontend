@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveTab, setLoginForm } from './loginSlice';
 import './index.css';
 
 const LoginPage = () => {
-    const [activeTab, setActiveTab] = useState('user');
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const activeTab = useSelector((state) => state.login.activeTab);
+    const loginForm = useSelector((state) => state.login.loginForm);
+
+    // 탭 전환
+    const handleTabChange = (tab) => {
+        dispatch(setActiveTab(tab));
+        // 필요하다면 탭 전환 시 입력값 초기화도 가능
+        // dispatch(resetLoginForm());
+    };
 
     const handleSignup = () => {
         if (activeTab === 'user') {
@@ -14,6 +26,21 @@ const LoginPage = () => {
         }
     };
 
+    // input 입력값 변경
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        dispatch(setLoginForm({ [name]: value }));
+    };
+
+    // 로그인 제출
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // 로그인 처리
+        console.log('로그인 정보:', loginForm, activeTab);
+        // 필요하다면 로그인 성공 시 폼 초기화
+        // dispatch(resetLoginForm());
+    };
+
     return (
         <div className="main">
             <div className="login-container">
@@ -21,20 +48,34 @@ const LoginPage = () => {
                 <div className="login-tabs">
                     <button
                         className={`tab ${activeTab === 'user' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('user')}
+                        onClick={() => handleTabChange('user')}
                     >
                         소비자
                     </button>
                     <button
                         className={`tab ${activeTab === 'seller' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('seller')}
+                        onClick={() => handleTabChange('seller')}
                     >
                         판매자
                     </button>
                 </div>
-                <form className="login-form">
-                    <input type="text" placeholder="아이디" />
-                    <input type="password" placeholder="비밀번호" />
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="아이디"
+                        value={loginForm.username}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="비밀번호"
+                        value={loginForm.password}
+                        onChange={handleInputChange}
+                        required
+                    />
                     <div className="login-options">
                         <Link to="/find-id">아이디 찾기</Link>|<Link to="/find-password">비밀번호 찾기</Link>
                     </div>

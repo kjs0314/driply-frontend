@@ -1,41 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveTab, setModalOpen } from './reviewSlice';
 import './Review.css';
 
+const writableReviews = [
+    {
+        id: 1,
+        title: '스타우브',
+        description: '[드리플 단독 컬러] 에스프레소 머신 - 3 colors',
+        color: 'white',
+        points: '포토 500P 일반 100P',
+    },
+];
+
+const myReviews = [
+    {
+        id: 1,
+        title: '스타우브',
+        description: '[드리플 단독 컬러] 에스프레소 머신 - 3 colors',
+        rating: 5,
+        reviewText: '컬러가 너무 예뻐요~ 배송도 빠르고 선물해줬는데 너무 좋아하네요~',
+        date: '2025.02.12',
+    },
+    {
+        id: 2,
+        title: '스타우브',
+        description: '[드리플 단독 컬러] 에스프레소 머신 - 3 colors',
+        rating: 5,
+        reviewText: '컬러가 너무 예뻐요~ 배송도 빠르고 선물해줬는데 너무 좋아하네요~',
+        date: '2025.02.12',
+    },
+];
+
 const Review = () => {
-    const [activeTab, setActiveTab] = useState('내 리뷰'); // 기본 활성화 탭 설정
-    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
+    const dispatch = useDispatch();
 
-    const handleModalOpen = () => setIsModalOpen(true);
-    const handleModalClose = () => setIsModalOpen(false);
+    // Redux 상태 사용
+    const activeTab = useSelector((state) => state.review.activeTab);
+    const isModalOpen = useSelector((state) => state.review.isModalOpen);
 
-    const writableReviews = [
-        {
-            id: 1,
-            title: '스타우브',
-            description: '[드리플 단독 컬러] 에스프레소 머신 - 3 colors',
-            color: 'white',
-            points: '포토 500P 일반 100P',
-        },
-    ];
-
-    const myReviews = [
-        {
-            id: 1,
-            title: '스타우브',
-            description: '[드리플 단독 컬러] 에스프레소 머신 - 3 colors',
-            rating: 5,
-            reviewText: '컬러가 너무 예뻐요~ 배송도 빠르고 선물해줬는데 너무 좋아하네요~',
-            date: '2025.02.12',
-        },
-        {
-            id: 2,
-            title: '스타우브',
-            description: '[드리플 단독 컬러] 에스프레소 머신 - 3 colors',
-            rating: 5,
-            reviewText: '컬러가 너무 예뻐요~ 배송도 빠르고 선물해줬는데 너무 좋아하네요~',
-            date: '2025.02.12',
-        },
-    ];
+    const handleModalOpen = () => dispatch(setModalOpen(true));
+    const handleModalClose = () => dispatch(setModalOpen(false));
 
     return (
         <div className="review">
@@ -45,13 +50,13 @@ const Review = () => {
             <div className="review-tabs">
                 <button
                     className={`review-tab ${activeTab === '작성 가능한 리뷰' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('작성 가능한 리뷰')}
+                    onClick={() => dispatch(setActiveTab('작성 가능한 리뷰'))}
                 >
                     작성 가능한 리뷰 (1)
                 </button>
                 <button
                     className={`review-tab ${activeTab === '내 리뷰' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('내 리뷰')}
+                    onClick={() => dispatch(setActiveTab('내 리뷰'))}
                 >
                     내 리뷰 (2)
                 </button>
@@ -141,9 +146,11 @@ const Review = () => {
                         <input type="file" id="file-upload" style={{ display: 'none' }} />
 
                         {/* 버튼 */}
-                        <div className="modal-actions">
-                            <button onClick={handleModalClose}>취소</button>
-                            <button>등록</button>
+                        <div className="review-modal-actions">
+                            <button class="review-cancel-btn" onClick={handleModalClose}>
+                                취소
+                            </button>
+                            <button class="review-submit-btn">등록</button>
                         </div>
                     </div>
                 </div>

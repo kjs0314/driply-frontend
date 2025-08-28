@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveCategory, setShowSearch, setIsClosing, setShowCustomerService } from './headerSlice';
 import './Header.css';
 
 const Header = () => {
-    const [activeCategory, setActiveCategory] = useState(null);
-    const [showSearch, setShowSearch] = useState(false);
-    const [isClosing, setIsClosing] = useState(false);
-    const [showCustomerService, setShowCustomerService] = useState(false);
+    const dispatch = useDispatch();
+
+    // Redux 상태값
+    const activeCategory = useSelector((state) => state.header.activeCategory);
+    const showSearch = useSelector((state) => state.header.showSearch);
+    const isClosing = useSelector((state) => state.header.isClosing);
+    const showCustomerService = useSelector((state) => state.header.showCustomerService);
+
     const navigate = useNavigate();
 
+    // 기존 setState 대신 dispatch(redux action) 사용
     const handleClose = () => {
-        setIsClosing(true);
+        dispatch(setIsClosing(true));
         setTimeout(() => {
-            setShowSearch(false);
-            setIsClosing(false);
+            dispatch(setShowSearch(false));
+            dispatch(setIsClosing(false));
         }, 300);
     };
 
@@ -94,8 +101,8 @@ const Header = () => {
                     |
                     <li
                         className="customer-service"
-                        onMouseEnter={() => setShowCustomerService(true)}
-                        onMouseLeave={() => setShowCustomerService(false)}
+                        onMouseEnter={() => dispatch(setShowCustomerService(true))}
+                        onMouseLeave={() => dispatch(setShowCustomerService(false))}
                     >
                         고객센터 &nbsp;
                         <svg width="10" height="10" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,8 +147,8 @@ const Header = () => {
                             {categories.map((category) => (
                                 <li
                                     key={category.id}
-                                    onMouseEnter={() => setActiveCategory(category.id)}
-                                    onMouseLeave={() => setActiveCategory(null)}
+                                    onMouseEnter={() => dispatch(setActiveCategory(category.id))}
+                                    onMouseLeave={() => dispatch(setActiveCategory(null))}
                                 >
                                     {/* <Link to={`/category/${category.id}`}>{category.name}</Link> */}
                                     {(() => {

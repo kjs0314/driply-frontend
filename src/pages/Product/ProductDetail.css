@@ -216,10 +216,14 @@ select {
     max-width: 1200px;
     margin: 0 auto;
     margin-top: 100px;
+    position: sticky;
+    top: 116px; /* 화면 최상단에 고정 */
+    background: #fff; /* 고정 시 겹침 방지 */
+    z-index: 100;
 }
 
 .tab-item {
-    padding: 10px 20px;
+    padding: 20px 20px;
     font-size: 16px;
     color: #888;
     cursor: pointer;
@@ -406,4 +410,146 @@ select {
     display: block;
     margin-top: 10px;
     font-size: 14px;
+}
+
+.qna-section {
+    max-width: 1200px;
+    margin: 30px auto 0 auto;
+    background: #fff;
+    border-radius: 7px;
+    padding: 28px 20px 30px 20px;
+}
+
+.qna-title-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.qna-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.qna-desc {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.qna-btn-row {
+    display: flex;
+    gap: 8px;
+}
+
+.qna-btn {
+    background: #232324;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    padding: 8px 22px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 6px;
+}
+
+.qna-my-btn {
+    background: #fff;
+    color: #232324;
+    border: 1px solid #232324;
+}
+
+.qna-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 15px;
+}
+
+.qna-table th,
+.qna-table td {
+    padding: 12px 0px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.qna-th-status {
+    width: 98px;
+    color: #888;
+}
+.qna-th-title {
+    width: 37%;
+    color: #888;
+}
+.qna-th-author {
+    width: 96px;
+    color: #888;
+}
+.qna-th-date {
+    width: 90px;
+    color: #888;
+}
+
+.qna-row td {
+    background: #fff;
+    vertical-align: top;
+}
+.qna-td-status {
+    color: #666;
+    font-size: 15px;
+    font-weight: 600;
+}
+.qna-td-title {
+    color: #252525;
+    font-size: 15px;
+    font-weight: 500;
+}
+.qna-td-author,
+.qna-td-date {
+    color: #888;
+    font-size: 14px;
+}
+
+.qna-content-row td {
+    background: #f6f6f6;
+    border-bottom: 0px solid #ddd;
+    /* padding: 15px 10px; */
+    font-size: 14px;
+    color: #222;
+    vertical-align: top;
+}
+
+/* 답변 행 */
+.qna-answer-row td {
+    background: #f6f6f6;
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 12px 0;
+    font-size: 14px;
+    color: #222;
+    vertical-align: top;
+}
+.qna-td-answer {
+    position: relative;
+}
+.qna-answer-label {
+    display: inline-block;
+    color: #252525;
+    font-weight: bold;
+    margin-right: 15px;
+}
+.qna-answer-content {
+    color: #222;
+    margin-right: 18px;
+}
+.qna-answer-author {
+    color: #888;
+    margin-left: 15px;
+    font-size: 13px;
+}
+.qna-answer-date {
+    color: #999;
+    margin-left: 10px;
+    font-size: 13px;
 }

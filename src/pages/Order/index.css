@@ -29,6 +29,71 @@
     margin-left: 10px;
 }
 
+.order-shipping-section {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 15px;
+}
+.order-shipping-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.order-shipping-edit-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.order-shipping-info {
+    display: grid;
+    margin-bottom: 10px;
+    gap: 4px;
+}
+.order-shipping-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 3px;
+}
+.order-shipping-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+.order-shipping-default {
+    background: #111;
+    color: #fff;
+    border-radius: 10px;
+    padding: 2px 6px;
+    font-size: 12px;
+    margin-left: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.order-shipping-phone {
+    color: #888;
+    font-size: 14px;
+}
+.order-shipping-address {
+    color: #444;
+    font-size: 16px;
+}
+.order-shipping-request {
+    margin-top: 8px;
+}
+.order-shipping-request select {
+    width: 701px;
+    padding: 7px 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
 .order-section {
     margin-bottom: 34px;
 }
